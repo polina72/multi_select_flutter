@@ -151,13 +151,17 @@ class _MultiSelectListDialogState<V> extends State<MultiSelectListDialog<V>> {
       ),
       actions: <Widget>[
         FlatButton(
-          child: widget.cancelText != null ? Text(widget.cancelText) : Text('CANCEL'),
+          child: widget.cancelText != null
+              ? Text(widget.cancelText)
+              : Text('CANCEL'),
           onPressed: () {
             widget._onCancelTap(context, widget.initialSelectedItems);
           },
         ),
         FlatButton(
-          child: widget.confirmText != null ? Text(widget.confirmText) : Text('OK'),
+          child: widget.confirmText != null
+              ? Text(widget.confirmText)
+              : Text('OK'),
           onPressed: () {
             widget._onConfirmTap(context, _selectedValues, widget.onConfirm);
           },
@@ -312,13 +316,17 @@ class _MultiSelectChipDialogState<V> extends State<MultiSelectChipDialog<V>> {
       ),
       actions: <Widget>[
         FlatButton(
-          child: widget.cancelText != null ? Text(widget.cancelText) : Text('CANCEL'),
+          child: widget.cancelText != null
+              ? Text(widget.cancelText)
+              : Text('CANCEL'),
           onPressed: () {
             widget._onCancelTap(context, widget.initialSelectedItems);
           },
         ),
         FlatButton(
-          child: widget.confirmText != null ? Text(widget.confirmText) : Text('OK'),
+          child: widget.confirmText != null
+              ? Text(widget.confirmText)
+              : Text('OK'),
           onPressed: () {
             widget._onConfirmTap(context, _selectedValues, widget.onConfirm);
           },
@@ -336,6 +344,7 @@ class MultiSelectField<V> extends StatefulWidget {
   final String buttonText;
   final Icon buttonIcon;
   final String title;
+  final EdgeInsets padding;
   final List<MultiSelectItem<V>> items;
   final void Function(List<V>) onSelectionChanged;
   final void Function(List<V>) onConfirm;
@@ -365,6 +374,7 @@ class MultiSelectField<V> extends StatefulWidget {
     this.confirmText,
     this.cancelText,
     this.state,
+    this.padding = const EdgeInsets.all(10),
   });
 
   @override
@@ -438,7 +448,7 @@ class _MultiSelectFieldState<V> extends State<MultiSelectField<V>> {
                       ),
                     )
                 : widget.decoration,
-            padding: EdgeInsets.all(10),
+            padding: widget.padding,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -566,6 +576,7 @@ class MultiSelectFormField<V> extends FormField<List<V>> {
   final bool searchable;
   final String confirmText;
   final String cancelText;
+  final EdgeInsets padding;
   final Key key;
 
   MultiSelectFormField({
@@ -587,6 +598,7 @@ class MultiSelectFormField<V> extends FormField<List<V>> {
     this.searchable,
     this.confirmText,
     this.cancelText,
+    this.padding,
     this.key,
   }) : super(
             key: key,
@@ -612,6 +624,7 @@ class MultiSelectFormField<V> extends FormField<List<V>> {
                 searchable: searchable,
                 confirmText: confirmText,
                 cancelText: cancelText,
+                padding: padding,
               );
             });
 }
