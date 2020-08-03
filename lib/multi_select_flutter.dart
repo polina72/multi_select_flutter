@@ -507,6 +507,7 @@ class MultiSelectChipDisplay<V> extends StatefulWidget {
   final Alignment alignment;
   final BoxDecoration decoration;
   final TextStyle textStyle;
+  final EdgeInsets padding;
 
   MultiSelectChipDisplay({
     this.items,
@@ -515,6 +516,7 @@ class MultiSelectChipDisplay<V> extends StatefulWidget {
     this.alignment,
     this.decoration,
     this.textStyle,
+    this.padding = const EdgeInsets.symmetric(horizontal: 10),
   });
 
   @override
@@ -528,7 +530,7 @@ class _MultiSelectChipDisplayState<V> extends State<MultiSelectChipDisplay<V>> {
     return Container(
       decoration: widget.decoration,
       alignment: widget.alignment ?? Alignment.centerLeft,
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: widget.padding,
       child: Wrap(
         children: widget.items != null
             ? widget.items.map((item) => _buildItem(item)).toList()
